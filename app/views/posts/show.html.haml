@@ -1,0 +1,11 @@
+%section.post 
+  %h1= @post.title 
+  %h4= @post.url 
+  %p= link_to "Create Comment", new_post_comment_path(post_id: @post.id)
+  %ul
+  - @comments.each do |comment| 
+    %li 
+      %h4=comment.author.email
+      %p= comment.text 
+
+ 

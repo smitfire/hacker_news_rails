@@ -1,0 +1,23 @@
+%section.user
+  %h4
+    = link_to "Create Post", new_post_path 
+  %h1
+    = current_user.email
+    = current_user.posts.count
+  %ul 
+  - current_user.posts.each do |post|
+    %li
+      %h2= post.title
+      %ul
+        %li= link_to "Edit", edit_post_path(post.id)
+        %li= link_to "Delete", post_path(post.id), method: :delete
+      %ul 
+      %h4
+        = "Comments"
+        = post.comments.count
+      - post.comments.each do |comment|
+        %li
+          %p= comment.text
+      %hr
+      %hr
+
